@@ -4,13 +4,13 @@
  "Сколько нужно программистов чтобы сделать проект ? 1, 25, команда"
  */
 
-let numbers = [25, 1];
-let project = 'проект';
-let team = `команда`;
-let howMuch = 'Сколько';
-let sentence = 'нужно программистов чтобы сделать проект ?';
+let numbers = [25, 1]
+let project = 'проект'
+let team = `команда`
+let howMuch = 'Сколько'
+let sentence = 'нужно программистов чтобы сделать проект ?'
 
-let task1 /* ВАШ КОД */;
+let task1 /* ВАШ КОД */
 
 /*
  2. Составьте предложение из представленного массива
@@ -30,25 +30,25 @@ let array = [
   '...',
   'что больше',
   'ощущает себя мишенью',
-  'не'
-];
+  'не',
+]
 
-let homeSentence /* ЗДЕСЬ ВАШ КОД */;
+let homeSentence /* ЗДЕСЬ ВАШ КОД */
 
 /*
  3. Добавьте свойста 4 новых свойства в объект используя
     квадратные скобки и точку.
  */
 
-let myObj = {};
-
+let myObj = {}
 
 /*
  5. Преобразуйте строку x,
     в максимально удобно читаемый для программиста вид
  */
 
-let frameworks = [4.7, 'Angular', '6Angular', 'React/Redux'];
+let frameworks = [4.7, 'Angular', '6Angular', 'React/Redux']
+
 let x =
   'google \
 released ' +
@@ -58,10 +58,12 @@ released ' +
   Math.floor(frameworks[0]) +
   '\
 But real speed is ' +
-  `${frameworks[frameworks.length - 1]}`;
+  `${frameworks[frameworks.length - 1]}`
 
+const angular4 = frameworks[1] + Math.floor(frameworks[0])
+const reactRedux = frameworks[frameworks.length - 1]
 
-
+const solutionTask5 = `google released new version ${angular4} But real speed is ${reactRedux}`
 
 // LINKS
 // https://dorey.github.io/JavaScript-Equality-Table/
