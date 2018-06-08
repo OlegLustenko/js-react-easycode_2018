@@ -3,8 +3,10 @@
 с свойством name, а значением будет первый аргумент функции
 */
 
-function returnObject() {
-
+function returnObject(name) {
+  return {
+    name: name,
+  };
 }
 
 var someObject = returnObject('Oleg');
@@ -12,7 +14,8 @@ console.log(someObject);
 
 /*
 
-Функция будет принимать 1 аргумент - ОБЪЕКТ у которого
+Функция будет принимать 1 аргумент
+ - ОБЪЕКТ у которого
 будет свойство name
 и возвращать новый объект изменяя свойство name
 в большой регистр
@@ -20,9 +23,12 @@ console.log(someObject);
 */
 
 function toUpperCase(obj) {
-
+  return {
+    name: obj.name.toUpperCase(),
+  };
 }
-const objectWithName = { name: 'privet kak dela' };
+
+const objectWithName = {name: 'privet kak dela'};
 console.log(toUpperCase(objectWithName));
 
 /*
@@ -37,7 +43,7 @@ arr[1] = 'poka';
 arr[2] = 'zdrastvuite';
 
 function addToArray(arrParam, newElem) {
-  // без "естественных" способов добавления
+  arrParam[arrParam.length] = newElem;
 }
 
 addToArray(arr, 34);
@@ -55,10 +61,14 @@ console.log(arr);
 */
 
 function simpleObjectGenerator(one, two, three) {
-
+  return {
+    argument1: one,
+    argument2: two,
+    argument3: three,
+  };
 }
 
-console.log(simpleObjectGenerator('protocol', { url: '22' }, 8000));
+console.log(simpleObjectGenerator('protocol', {url: '22'}, 8000));
 /* {
    argument1:'protocol',
    argument2:{url:'22'},
@@ -85,10 +95,18 @@ console.log(simpleObjectGenerator('protocol', { url: '22' }, 8000));
     тогда добавляет данное свойство и возвращает новый объект
 
 */
-var myName = { name: 'Oleg' };
+var myName = {name: 'Oleg'};
 
 function addNameToUser(newKey, newValue, userName) {
+  const myObj = {
+    [newKey]: newValue,
+  };
+  // myObj[newKey] = newValue;
 
+  if (userName.name) {
+    myObj.name = userName.name;
+  }
+  return myObj;
 }
 
 console.log(addNameToUser('family', '%Lustenko%', myName));
@@ -110,7 +128,19 @@ console.log(myName);
 */
 
 function fizzBuzz(num) {
-  /* Ваш код здесь */
+  let str = '';
+  // 3 % 3 == 0
+  // 15 % 3 === 0
+  // 1
+  if (num % 3 === 0) {
+    str = str + 'Fizz';
+  }
+  // 15 % 5 === 0
+  if (num % 5 === 0) {
+    str = str + 'Buzz';
+  }
+
+  return str.length === 0 ? num : str;
 }
 
 fizzBuzz(1); // 1
@@ -131,6 +161,20 @@ fizzBuzz(21); // 'Fizz'
 */
 
 function super2(arg1, arg2, arg3, callback) {
+  /*
+  * arg1 == 10
+  * arg2 == 20
+  * arg3 == 30
+  * callback == function www() {}
+  * */
+  const myArray = [arg1, arg2, arg3];
 
+  callback(myArray);
 }
+
+function myFunction(someArray) {
+  console.log('--->', someArray);
+}
+
+super2(10, 20, 30, myFunction);
 
