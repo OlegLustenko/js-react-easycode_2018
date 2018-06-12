@@ -163,6 +163,16 @@ const category = webStore.category;
 for (let key in category) {
   const someArray = category[key];
 }
+
+// Array
+const categories = Object.values(webStore.category);
+
+for (let i = 0; i < categories.length; i++) {
+  let elem = categories[i];
+
+  console.log(elem);
+}
+
 /*
 * Напишите функцию которая принимает объект категорий
 * Отобразите пожалуйста в консоле

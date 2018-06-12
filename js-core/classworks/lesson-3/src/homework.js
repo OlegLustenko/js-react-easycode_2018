@@ -143,7 +143,7 @@ function fizzBuzz(num) {
   return str.length === 0 ? num : str;
 }
 
-fizzBuzz(1); // 1
+var z = fizzBuzz(1); // 1
 fizzBuzz(2); // 2
 fizzBuzz(3); // 'Fizz'
 fizzBuzz(5); // 'Buzz'
@@ -169,12 +169,15 @@ function super2(arg1, arg2, arg3, callback) {
   * */
   const myArray = [arg1, arg2, arg3];
 
-  callback(myArray);
+  return callback(myArray);
 }
 
 function myFunction(someArray) {
-  console.log('--->', someArray);
+  return someArray;
 }
 
-super2(10, 20, 30, myFunction);
+super2(10, 20, 40, myFunction);
+
+
+
 
