@@ -35,16 +35,29 @@ let arr2 = [
   {},
   0,
   0,
-  9
+  9,
 ];
 
 function moveZeroToEnd(arr) {
+  const arrWithZeros = [];
+  const arrWithNumbers = [];
 
+  for (let i = 0; i < arr.length; i++) {
+    const elem = arr[i];
+
+    if (elem === 0) {
+      arrWithZeros.push(elem);
+      continue;
+    }
+
+    arrWithNumbers.push(elem);
+  }
+
+  return arrWithNumbers.concat(arrWithZeros);
 }
 
-
-console.log(moveZeroToEnd(arr1));
-console.log(moveZeroToEnd(arr2));
+// console.log(moveZeroToEnd(arr1));
+// console.log(moveZeroToEnd(arr2));
 
 /*
  2. Верните сумму двух найменьших чисел в массиве
@@ -57,8 +70,25 @@ console.log(moveZeroToEnd(arr2));
  */
 
 function minimalNumber(arr) {
+  /*
+  * -1
+  *  1
+  *  0
+  * */
+  console.log(arr);
+  const sortedArray = arr.sort(function (firstElem, secondElem) {
+    console.log('firstElem:', firstElem);
+    console.log('SecondElem:', secondElem);
+    return firstElem > secondElem;
+  });
 
+  return sortedArray[0] + sortedArray[1];
 }
+
+minimalNumber([10, 20, 30, 1, 31, 11, 10]);
+// minimalNumber([-1, 0, 25]);
+// minimalNumber([-4, -10, 25, 10]);
+// minimalNumber([0, 200, 10, 25, 15]);
 
 /*
  3. Напишите функцию которая меняет местами имя и фамилию
@@ -68,6 +98,7 @@ function minimalNumber(arr) {
  */
 
 function nameShuffler(str) {
+  return str.split(' ').reverse().join(' ');
 }
 
 /*
@@ -79,7 +110,14 @@ function nameShuffler(str) {
  */
 
 function capMe(arr) {
-
+  const solutionArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    const elemWithLowerCase = arr[i].toLowerCase();
+    const firstChar = elemWithLowerCase[0].toUpperCase();
+    const fullName = firstChar + elemWithLowerCase.slice(1);
+    solutionArr.push(fullName);
+  }
+  return solutionArr;
 }
 
 // @SUPER
@@ -87,22 +125,35 @@ function capMe(arr) {
  1. Найдите число отсутствующее в заданной последовательности
 
  example:
-  [1,3,5,9] => 7 (9-1) / 4 == 2
+  [1,3,5,9] =>  2
   [0,8,16,32] => 24
   [4, 6, 8, 10] => 2 // число сначала
   [0,16,24,32] => 8
  */
 
 function random(arr) {
+  const lastElem = arr[arr.length - 1];
+  const firstElem = arr[0];
+  const step = (lastElem - firstElem) / arr.length;
+  for (let i = 0; i < arr.length; i++) {
+    const elem = arr[i];
+    const nextElem = arr[i + 1];
+    if (nextElem) {
+      return lastElem - arr[arr.length - 2];
+    }
+    if (elem + step !== nextElem) {
+      return elem + step;
+    }
+  }
 }
 
-random([1, 3, 5, 9]);
-random([0, 8, 16, 32]);
-random([0, 16, 24, 32]);
-random([4, 6, 8, 10]);
+console.log(random([1, 3, 5, 9]));
+console.log(random([0, 8, 16, 32]));
+console.log(random([0, 16, 24, 32]));
+console.log(random([4, 6, 8, 10]));
 
 /*
- Задача с собеседований*
+ Задача с собеседований
 
  2. Напишите функция которая преобразовывает/открывает скобки всех
  вложенных внутри массивов
