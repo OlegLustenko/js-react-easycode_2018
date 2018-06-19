@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
  1. Переместите 0 в конец массива, остальные числа должны остаться
@@ -12,13 +12,13 @@
 
 let arr1 = [1, false, 2, 0, 3, null, 0, 4, 0, 25];
 let arr2 = [
-  'a',
+  "a",
   0,
   0,
-  'b',
+  "b",
   null,
-  'c',
-  'd',
+  "c",
+  "d",
   0,
   1,
   false,
@@ -35,7 +35,7 @@ let arr2 = [
   {},
   0,
   0,
-  9,
+  9
 ];
 
 function moveZeroToEnd(arr) {
@@ -76,9 +76,9 @@ function minimalNumber(arr) {
   *  0
   * */
   console.log(arr);
-  const sortedArray = arr.sort(function (firstElem, secondElem) {
-    console.log('firstElem:', firstElem);
-    console.log('SecondElem:', secondElem);
+  const sortedArray = arr.sort(function(firstElem, secondElem) {
+    console.log("firstElem:", firstElem);
+    console.log("SecondElem:", secondElem);
     return firstElem > secondElem;
   });
 
@@ -98,7 +98,10 @@ minimalNumber([10, 20, 30, 1, 31, 11, 10]);
  */
 
 function nameShuffler(str) {
-  return str.split(' ').reverse().join(' ');
+  return str
+    .split(" ")
+    .reverse()
+    .join(" ");
 }
 
 /*
@@ -167,4 +170,10 @@ console.log(random([4, 6, 8, 10]));
 
  */
 
-function openBraces(arr) {}
+function openBraces(arr) {
+  return arr.reduce(function(newArray, elem) {
+    return Array.isArray(elem)
+      ? newArray.concat(openBraces(elem))
+      : newArray.concat(elem);
+  }, []);
+}

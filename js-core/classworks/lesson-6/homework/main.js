@@ -427,20 +427,31 @@ function createHashTags(arr) {
 // @ SUPER
 /*
  *
+ *
  * TASK 1
  * Выведите уникальные значения
+ *
  *
  * */
 
 function uniqueElements(arr) {
+  const filteredArray = arr.filter(function (value, index) {
+    // value -> 1
+    // indexOf -> 0
+    // index -> 0, 1
+    return arr.indexOf(value) === index;
+  });
+  console.log(filteredArray);
 
+  // ES6 ->
+  return [...new Set(arr)];
 }
 
 //
 let notUniqArray = [1, 1, 2, 2, 2, 5, 10, 25, 30, 5, 1, 0, 22, 3, 10, 3];
 //
-console.log(uniqueElements(notUniqArray)); //1,2,5,10,25,30,0,22,3,
-console.log(uniqueElements([1, 1, 2, 3, 3])); // 1,2,3
+console.log(uniqueElements(notUniqArray)); // [1, 2, 5, 10, 25, 30, 0, 22, 3],
+console.log(uniqueElements([1, 1, 2, 3, 3])); // [1, 2, 3]
 
 /*
 *
