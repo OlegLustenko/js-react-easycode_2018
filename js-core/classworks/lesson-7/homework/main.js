@@ -10,7 +10,11 @@
  * */
 
 function add(x) {
-
+  return function (y) {
+    return function (z) {
+      return x + y + z;
+    };
+  };
 }
 
 // console.log(add(1)(2)(3)); // 6
@@ -31,15 +35,28 @@ function add(x) {
  * */
 
 function patternModule() {
+  const obj = {};
+  let counter = 0;
 
+  function add() {
+    return ++counter;
+  }
+
+  function resetCounter() {
+    counter = 0;
+  }
+
+  obj.add = add;
+  obj.resetCounter = resetCounter;
+  return obj;
 }
 
 // patternModule
 
 let test = patternModule(); // 0
-test.method(); //1
-test.method(); //2
-test.method(); //3
+test.add(); //1
+test.add(); //2
+test.add(); //3
 
 /*
  * TASK 1
@@ -61,18 +78,40 @@ test.method(); //3
 let jun = {};
 
 function methodCounter(obj, name, num, fn) {
+  /*
+  * мне нужно добавить метод объекту
+  * в зависимости от того чему равняет сейчас счетчик
+  * или вызвать функцию(аргумент 4)
+  * или отправить сообщение об ошибке
+  *
+  * */
+  let counter = num;
+  obj[name] = function (...args) {
+    if (counter === 0) {
+      return 'ERROR ! add more methods';
+    }
+    counter--;
 
+    console.log('у вас осталось попыток: ', counter);
+    return fn(args);
+  };
 }
 
 methodCounter(jun, 'logger', 2, function (args) {
+  return args.reduce(function (previousElem, elem) {
+    return previousElem + elem;
+  }, 0);
+});
 
+methodCounter(jun, 'qwerty', 2, function (a, b, c, d) {
+  return a + b + c + d;
 });
 
 jun.logger(1, 2, 3, 4); // 2, 10
 jun.logger(5, 5, 5, 5); // 1, 20
 jun.logger(5, 5); // ERROR ! add more methods
 
-jun.addCounter(10, methodName);
+jun.addCounter(10, 'qwerty');
 // @SUPER,
 
 /*

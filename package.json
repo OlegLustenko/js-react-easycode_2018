@@ -1,0 +1,11 @@
+{
+  "name": "js-react-easycode_2018",
+  "version": "1.0.0",
+  "dependencies": {},
+  "prettier": {
+    "semi": true,
+    "bracketSpacing": false,
+    "singleQuote": true,
+    "jsxBracketSameLine": true
+  }
+}
