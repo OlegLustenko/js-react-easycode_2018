@@ -8,12 +8,10 @@
  * ей аргументы, и прибавлять их в строку
  * и отображать в консоле всю строку
  *
- *
  * */
 
 function solution1(someString) {
   /* ВАШ КОД */
-
 }
 
 let stringBuffer = solution1();
@@ -31,7 +29,16 @@ stringBuffer('Привет'); // Замыкания Использовать н�
  * */
 
 function validBraces(str) {
-
+  while (
+    str.indexOf('()') !== -1 ||
+    str.indexOf('{}') !== -1 ||
+    str.indexOf('[]') !== -1
+  ) {
+    str = str.replace('()', '');
+    str = str.replace('[]', '');
+    str = str.replace('{}', '');
+  }
+  return str.length === 0;
 }
 
 validBraces('(){}[]'); // => returns true
@@ -56,8 +63,21 @@ validBraces('({[]})'); // => returns true
  *
  * */
 
-function sum(num) {
+function sum(initialNumber) {
+  if (sum.cachedNumber && sum.cachedNumber[initialNumber]) {
+    return `значение взятo из кеша ${sum.cachedNumber[initialNumber]}`;
+  }
+  let newNumber = initialNumber;
+  sum.cachedNumber = {
+    [initialNumber]: 0
+  };
 
+  while (newNumber > 0) {
+    sum.cachedNumber[initialNumber] = sum.cachedNumber[initialNumber] + newNumber;
+    newNumber--;
+  }
+
+  return sum.cachedNumber[initialNumber] + ' Значение кешировано';
 }
 
 sum(5); // 15 Значение кешировано
