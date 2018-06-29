@@ -1,0 +1,14 @@
+{
+  "name": "iPhone 8s",
+  "vendors": [
+    "citrus",
+    "rozetka",
+    "mobilluck"
+  ],
+  "application": {
+    "name": "appStore"
+  },
+  "price": 800,
+  "sold": false,
+  "tested": null
+}

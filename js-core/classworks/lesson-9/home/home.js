@@ -12,18 +12,39 @@ let developer1 = {
   requirements: ['Node.js', 'JavaScript', 'OOP'],
   goodDev: goodDev
 };
+
 let developer2 = {
   experience: [
-    { technology: 'java' },
-    { technology: 'c++' },
-    { technology: 'aws' },
-    { technology: 'docker' }
+    {technology: 'java'},
+    {technology: 'c++'},
+    {technology: 'aws'},
+    {technology: 'docker'}
   ],
   requirements: ['java', 'json', 'c++', 'JavaScript'],
   goodDev: goodDev
 };
 
-function goodDev(dev) {/* ваш код */}
+function extractDevTechnologies(experience) {
+  return experience.map(technologySkill => technologySkill.technology);
+}
+
+function goodDev() {
+  const devSkills = this.skills || extractDevTechnologies(this.experience);
+
+  this.requirements.forEach(requirmentToDeveloper => {
+    const isDevKnowIt = devSkills.includes(requirmentToDeveloper);
+
+    const successFailLabel = isDevKnowIt ? 'success' : 'fail';
+    console.log(`required: ${requirmentToDeveloper} ... ${successFailLabel}`);
+  });
+}
+
+const developers = [developer1, developer2];
+
+developers.forEach((dev, index) => {
+  console.log('developer ', index + 1);
+  dev.goodDev();
+});
 
 // developer 1
 // required: Node.js ... success
@@ -33,7 +54,7 @@ function goodDev(dev) {/* ваш код */}
 
 // developer 2
 // required: json ... fail
-// required: JavaScript ... success
+// required: JavaScript ... fail
 // required: Java ... success
 // required: OOP ... success
 
@@ -50,16 +71,13 @@ function goodDev(dev) {/* ваш код */}
  * */
 
 let myObject = {
-  database: [
-    { age: 100, name: 'b' },
-    { age: 15, name: 'c' },
-    { age: 25, name: 'a' }
-  ]
+  database: [{age: 100, name: 'b'}, {age: 15, name: 'c'}, {age: 25, name: 'a'}]
 };
 
-
 myObject.myFilter = function(param) {
-
+  return this.database.sort((user1, user2) => {
+    return user1[param] > user2[param];
+  });
 };
 
 // {age:15, name:'c'}, {age:25, name:'a'} {age:100, name:'b'}
@@ -67,7 +85,6 @@ console.log(myObject.myFilter('age'));
 
 // {age:25, name:a}, {age:100, name: b} ...
 console.log(myObject.myFilter('name'));
-
 
 /*
  * TASK 3
@@ -101,9 +118,7 @@ let junior = {};
 
 // fn.length == arguments.length
 
-function addMethod(object, name, fn) {
-
-}
+function addMethod(object, name, fn) {}
 
 addMethod(junior, 'ok', function() {
   console.log('zero arguments');
@@ -122,3 +137,6 @@ junior.ok(1, 2, 3); // 'three arguments'
 junior.ok(1, 2); // 'two arguments'
 junior.ok(1); //'one arguments'
 junior.ok(); //'zero arguments'
+
+
+

@@ -95,7 +95,7 @@ var project = {
   name: 'Landing page',
   salary: '1200$',
   technology: ['CSS3', 'HTML5', 'jQuery'],
-  method: function() {
+  showThis: function() {
     console.log('что делать ?');
   }
 };
