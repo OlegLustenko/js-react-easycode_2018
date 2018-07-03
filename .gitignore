@@ -62,3 +62,7 @@ typings/
 
 # IDE
 .idea
+
+# OCaml
+ocaml-homeworks/
+reasonml-homeworks/
