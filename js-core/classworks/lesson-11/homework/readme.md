@@ -34,7 +34,6 @@
 # Чтобы каждый из вас подумал, как может выглядить ПРИЛОЖЕНИЕ
 # ТЕЛЕФОННЫЙ СПРАВОЧНИК
 
-
 Приложение телефонный справочник
 
 + Создайте функцию конструктор.
@@ -51,11 +50,21 @@
 ```js
 function PhoneApp() {
   this.dataBase = [
-    {id:1, name:'Vasya', phone:'qweqwe'}
+        {id:1, name:'Vasya', phone:'qweqwe'},
+        {id:1, name:'Vasya', phone:'qweqwe'},
+        {id:1, name:'Vasya', phone:'qweqwe'},
+        {id:1, name:'Vasya', phone:'qweqwe'},
     ]
 }
 
 PhoneApp.prototype.editUser = function(id, options) {
+  /*
+   options.name
+   options.
+  */  
+}
+
+PhoneApp.prototype._validate= function(id, options) {
   /*
    options.name
    options.
