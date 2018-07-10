@@ -34,21 +34,40 @@
  *
  * */
 
-function Http() { }
-Http.prototype.createServer = function(fn) {
+function Http() {}
 
-}
+Http.prototype.createServer = function(fn) {
+  const ctx = {
+    req: {
+      PORT: 8080,
+      url: 'http://localhost'
+    },
+    res: {
+      status: 200,
+      message: 'ok',
+      header: {
+        'content-type': 'application/json'
+      }
+    }
+  };
+  this.callback = () => {
+    fn(ctx, () => {});
+  };
+  return this;
+};
 
 Http.prototype.listen = function(PORT, host) {
+  console.log(`server running on ${host}:${PORT}`);
+  this.callback();
+};
 
-}
+const server = new Http()
+  .createServer(function(ctx, next) {
+    console.log(ctx);
+  })
+  .listen(3000, 'localhost');
 
-const server = new Http().createServer(function(ctx, next) {
-  console.log(ctx);
-}).listen(3000, 'localhost');
-
-
-// TASK 1
+/* TASK 1
 // Создать класс Human, у которого будут свойства обычного человека:
 // имя, возраст, пол, рост, вес.
 // Используя прототипное наследование создать дочерние классы Worker
@@ -58,8 +77,9 @@ const server = new Http().createServer(function(ctx, next) {
 // Создать несколько экземпляров классов Worker и Student, вывести их в консоль.
 // Убедиться что они имеют поля родительского класса Human
 
-
 // @SUPER
+
+*/
 
 /*
  *
@@ -70,3 +90,11 @@ const server = new Http().createServer(function(ctx, next) {
  *
 */
 
+const add = (a, b) => a + b;
+
+const wrapperFunction = fn => (...args) => {
+  console.log(args);
+  return fn(...args);
+};
+
+const addWIthLogsArgs = wrapperFunction(add);

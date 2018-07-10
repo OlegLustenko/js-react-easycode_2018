@@ -118,7 +118,16 @@ let junior = {};
 
 // fn.length == arguments.length
 
-function addMethod(object, name, fn) {}
+function addMethod(object, name, fn) {
+  let oldMethod = object[name]; // ok => function
+  object[name] = function(...args) {
+    if (fn.length === args.length) {
+      fn.apply(this, args);
+    } else if (typeof oldMethod === 'function') {
+      oldMethod.apply(this, args);
+    }
+  };
+}
 
 addMethod(junior, 'ok', function() {
   console.log('zero arguments');
@@ -137,6 +146,4 @@ junior.ok(1, 2, 3); // 'three arguments'
 junior.ok(1, 2); // 'two arguments'
 junior.ok(1); //'one arguments'
 junior.ok(); //'zero arguments'
-
-
-
+junior.ok(); //'zero arguments'
