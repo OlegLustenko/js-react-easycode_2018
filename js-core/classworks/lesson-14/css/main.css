@@ -1,0 +1,8 @@
+button {
+  padding: 40px;
+}
+
+.main__button {
+  background: #f4f4;
+  border: 10px solid gray;
+}

@@ -1,0 +1,12 @@
+h1, .center {
+  text-align: center;
+}
+
+// .test__question {
+//   font-size: 25px;
+//   margin-left: 3rem;
+// }
+ul>li {
+  list-style: none;
+}
+

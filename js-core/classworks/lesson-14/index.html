@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+Сделайте такое дерево при помощи JavaScript
+<div>
+    <ul>
+        <li>JavaScript</li>
+        <li>React</li>
+        <li>Node.js</li>
+    </ul>
+</div>
+
+<body>
+<script>
+  const div = document.createElement('div'); // {}
+  div.textContent = 'WWWW';
+  const div2 = document.createElement('div'); // {}
+  div.appendChild(div2);
+  console.dir(div);
+  console.log(div);
+  // document.body.appendChild(div);
+
+  const divTask = document.createElement('div'); // {}
+  const ulTask = document.createElement('ul');
+
+  // виртуализация контента/данных
+  const content = ['JavaScript', 'React', 'Node.js'];
+
+  content.forEach((value) => {
+    const li = document.createElement('li');
+    li.setAttribute('class', 'WWWWW');
+    li.textContent = value;
+    ulTask.appendChild(li);
+  });
+
+  divTask.appendChild(ulTask);
+
+  document.body.appendChild(divTask);
+
+</script>
+</body>
+
+</html>
