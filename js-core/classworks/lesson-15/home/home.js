@@ -1,4 +1,5 @@
 /*
+ *
 TASK 0
 
 Проверьте что строка содержит все символы от "a" до "z"
@@ -8,11 +9,28 @@ TASK 0
   solution("qpwoeirutyalskdjfhgmznxbcv") // true
   solution("qqqqqqqqpwoeirutyallskkdjfhgmmznxbcv") // true
   solution("0123456789abcdefghijklmnop") // false
-*/
+ *
+ */
 
+const sortAbc = abc => abc.split('').sort().join('');
 const solution = str => {
+  if (26 > str.length) {
+    return false;
+  }
+  const abc = 'qazwsxedcrfvtgbyhnujmikolp';
+  let uniqLetters = str
+    .split('')
+    .filter((letter, index, arr) => arr.indexOf(letter) === index).join('');
 
+  return sortAbc(abc) === sortAbc(uniqLetters);
 };
+
+solution('wyyga'); // false
+solution('qwertyuioplkjhgfdsazxcvbnm'); // true
+solution('ejuxggfsts'); // false
+solution('qpwoeirutyalskdjfhgmznxbcv'); // true
+solution('qqqqqqqqpwoeirutyallskkdjfhgmmznxbcv'); // true
+solution('0123456789abcdefghijklmnop'); // false
 
 /*
  2. Напишите функция которая преобразовывает / открывает
@@ -25,7 +43,7 @@ const solution = str => {
  example:
 
  [[1,2],[3,[4]],5, 10] => [1, 2, 3, 4, 5, 10]
- [25, 10, [10, [15]]] => [25, 10, 10, 15]
+ [25, 10, [10, [15]]]  => [25, 10, 10, 15]
  [1, [2, [ {a: "b", c: 'd' }, { c: [1, 2, 5] } ] ] ] => [1, 2, {a: "b"}]
  */
 
@@ -33,9 +51,8 @@ const solution = str => {
 //#2 arr == [2, [ {a: "b"}, { c: 'd' } ] ] flattenedArray = [2] + flatten == [{a: "b"}, { c: 'd' }]
 //#3 arr == [ {a: "b"}, { c: 'd' } ] flattenedArray = [{a: "b"}, { c: 'd' }]
 //#
-const flatten = arr => {};
-
-
+const flatten = arr => {
+};
 
 /*
 Виртуализировать таблицу, сделать рендер всей

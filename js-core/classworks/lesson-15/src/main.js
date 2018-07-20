@@ -37,55 +37,6 @@ const app = {
     const button = this.newEl('button');
     button.textContent = 'Проверить';
     button.onclick = function () {
-      /*
-      * При нажатии на кнопку мы изменяем заголовок
-      * у второго вопроса на "вопрос 999"
-      * > questionsList
-      * при нажатии во второй раз "вопрос 2"
-      * */
-      const header = questionsList
-        .children[1] // li
-        .children[0]; // h3
-
-      const firstInput = questionsList
-        .children[1] // li
-        .lastChild
-        .firstChild
-        .firstChild; // h3
-
-      const secondInput = questionsList
-        .children[1] // li
-        .lastChild
-        .lastChild
-        .firstChild; // h3
-
-      const firstState = 'вопрос 999';
-
-      header.textContent = header.textContent === firstState
-        ? 'вопрос 2'
-        : firstState;
-      const secondInputs = questionsList.querySelectorAll('li:nth-child(2) > input[type="checkbox"]');
-      const second = questionsList.querySelector('li:nth-child(2) > input[type="checkbox"]');
-
-      [...secondInputs].forEach(input => {
-        input.checked = !input.checked;
-      });
-
-      const questionsHeaders = questionsList.querySelectorAll('h3');
-      [...questionsHeaders].forEach(header => {
-        if (header.getAttribute('class') === 'active') {
-          header.setAttribute('class', '');
-        } else {
-          header.setAttribute('class', 'active');
-        }
-      });
-      console.log(questionsHeaders);
-      /*
-      *
-      * Добавьте класс .active каждому заголовку вопроса
-      * используйте querySelectorAll
-      *
-      *  */
 
     };
 
