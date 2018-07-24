@@ -8,14 +8,20 @@
  // solution([[]]) => []
  [ [ [ ] ] ] = [ [] ]
 
-
  ИСПОЛЬЗУЙТЕ МЕТОДЫ МАССИВОВ !
  */
 
-solution([[1, 3, 5], [2, 4, 6]]);
-solution([[1, 'a'], [2, 'b'], [3, 'c']]);
+solution([[1, 3, 5], [2, 4, 6]]); // [ [1, 2], [3, 4], [5, 6] ]
+solution([[1, 'a'], [2, 'b'], [3, 'c']]); // [ [] ]
 
-const solution = arr => {};
+const solution = arr => {
+  /* каким то образом понять сколько должно быть на выходе */
+  return arr[0].map((_, index) => {
+    return arr.map(value => {
+      return value[index];
+    });
+  });
+};
 
 const navigation = [
   {name: 'Главная'},
@@ -28,7 +34,9 @@ const navigation = [
       }
     ]
   },
-  {name: 'Профиль'}
+  {
+    name: 'Профиль'
+  }
 ];
 
 /*
@@ -40,11 +48,10 @@ const navigation = [
  children ul -> li
 
  Используйте innerHTML
-
- */
+*/
 
 /*
-
+!
 <h1>Main</h1>
 <ul>
   <h1>Catalog</h1>
@@ -54,19 +61,18 @@ const navigation = [
       <ul>
         <li>
           <h1>Notebook</h1>
-          <h1>...</h1>
         </li>
       </ul>
   </li>
-
 */
 
 const visualArray = arr => {};
 
-/*  ПРИЛОЖЕНИЕ  */
-// Добавьте скрипт который будет рисовать всю страницу с таблицей.
-// https://github.com/aleksandra-maslennikova/telephone-book
-// innerHTML должно быть максимум
+/*  ПРИЛОЖЕНИЕ
+ Добавьте скрипт который будет рисовать всю страницу и таблицу
+ https://github.com/aleksandra-maslennikova/telephone-book
+ innerHTML должно быть максимум
+*/
 
 /* ТЕСТ */
 
@@ -79,9 +85,9 @@ const visualArray = arr => {};
 // отображайте "ПРАВИЛЬНО" или не правильно
 // или отображайте значек X или галочку, возле вопроса
 
-
-
-/* @SUPER-FRONT */
+/*
+  @SUPER-FRONT
+*/
 
 /*
 * 4. По нажатию на кнопку(проверить) отобразится "модальное" окно в котором отобразится
