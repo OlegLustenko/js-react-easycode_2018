@@ -2,69 +2,75 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Carousel</title>
+    <meta charset="UTF-8">
+    <title>Carousel</title>
 </head>
 <style>
-  * {
-    box-sizing: border-box;
-  }
+    * {
+        box-sizing: border-box;
+    }
 
-  ul,
-  li,
-  img {
-    margin: 0;
-    padding: 0;
-  }
+    ul,
+    li,
+    img {
+        margin: 0;
+        padding: 0;
+    }
 
-  main {
-    max-width: 748px;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    height: 320px;
-  }
+    main {
+        max-width: 748px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        height: 320px;
+    }
 
-  ul {
-    list-style: none;
-    position: relative;
-    width: 2000em;
-    height: 300px;
-  }
+    ul {
+        list-style: none;
+        position: relative;
+        width: 2000em;
+        height: 300px;
+    }
 
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
 
-  li {
-    float: left;
-    width: 748px;
-    position: absolute;
-  }
+    li {
+        float: left;
+        width: 748px;
+        position: absolute;
+    }
 
-  button {}
+    button {
+    }
 
-  .right {
-    float: right;
-  }
+    .right {
+        float: right;
+    }
 </style>
 
 <body>
-  <main>
+<main>
     <ul class="ec-carousel">
-      <li style="display: none"><img src="img/img1.jpg" alt="1"></li>
-      <li style="display: block"><img src="img/img2.jpg" alt="2"></li>
-      <li style="display: none"><img src="img/img3.jpg" alt="3"></li>
+        <li style="display: block"><img src="img/img1.jpg" alt="1"></li>
+        <li style="display: none"><img src="img/img2.jpg" alt="2"></li>
+        <li style="display: none"><img src="img/img3.jpg" alt="3"></li>
     </ul>
-    <button class="ec-left"><=</button>
+    <button class="ec-left" onclick=""><=</button>
     <button class="ec-right">=></button>
-  </main>
-  <script src="slider.js"></script>
-  <script>
-    ECSlider.start({ activeElementIndex: 1, sliderTagName: 'ec-carousel' })
-  </script>
+</main>
+<script src="slider.js"></script>
+<script>
+  ECSlider.initialize(
+    {
+      sliderClassName: 'ec-carousel',
+      activePicture: 1,
+    },
+  );
+</script>
 </body>
 
 </html>
