@@ -4,9 +4,19 @@ function Controller(model, view) {
   this.init();
 }
 
+const fakeServerRequest = (data) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(data);
+    }, 4000);
+  });
+};
+
 Controller.prototype.init = function () {
   this.addHandlerForAddTask();
-
+  fakeServerRequest(this.model.data).then(todos => {
+    this.view.render(todos);
+  });
   this.handlerForAddTask = this.handlerForAddTask.bind(this);
 };
 

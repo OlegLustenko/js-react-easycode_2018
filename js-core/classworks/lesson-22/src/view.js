@@ -5,8 +5,9 @@ class View {
       input: document.querySelector('.controls__input'),
       listItems: document.querySelector('.list-items'),
     };
-
-    this.render(initialState);
+    if (initialState) {
+      this.render(initialState);
+    }
   }
 
   render(newData) {
